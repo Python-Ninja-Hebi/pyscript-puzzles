@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+    <body>
+        <py-title>puzzle #1 Inspect js</py-title>
+        <div id="content"><div>
+
+        <py-script>     
+import js
+import inspect
+
+for i in inspect.getmembers(js):
+    PyScript.write('content',f'<p>{i[0]} {i[1]}</p>', append=True)
+        </py-script>
+    </body>
+</html>
