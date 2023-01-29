@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.js"></script>
+	</script>
+    </head>
+    <body>
+       
+        <canvas id="lineChart" width="800" height="600"></canvas>
+
+    <py-script>
+from js import document, Chart
+from pyodide.ffi import to_js
+import asyncio
+
+
+canvas = document.getElementById('lineChart')
+
+ctx = canvas.getContext('2d')
+ 
+ctx.fillStyle = 'green'
+ctx.fillRect(10, 10, 150, 100)
+
+chart = Chart.new(ctx, to_js({
+      "type": "line",
+      "data": {
+        "labels": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        "datasets": [
+          {
+            "label": "work load",
+            "data": [2, 9, 3, 17, 6, 3, 7],
+            "backgroundColor": "rgba(153,205,1,0.6)",
+          },
+          {
+            "label": "free hours",
+            "data": [2, 2, 5, 5, 2, 1, 10],
+            "backgroundColor": "rgba(155,153,10,0.6)",
+          },
+        ],
+      },
+      "options": {    
+        "responsive": False,
+        "maintainAspectRatio": False
+      }
+    }))
+
+        </py-script>
+    </body>
+</html>
